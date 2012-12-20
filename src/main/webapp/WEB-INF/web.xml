@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app
+  PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+  "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+  <servlet>
+    <servlet-name>echo</servlet-name>
+    <servlet-class>com.samskivert.sandbox.EchoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>echo</servlet-name>
+    <url-pattern>/echo/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- restrict admin servlets to admins -->
+  <security-constraint>
+    <web-resource-collection>
+      <url-pattern>/admin/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+</web-app>
